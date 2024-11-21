@@ -32,7 +32,7 @@ export default function MiniGameHub() {
 		},
 		{
 			id: 2,
-			link: "https://pinpoint-flame.vercel.app",
+			link: "https://sudoku-seven-gamma.vercel.app",
 			title: "Sudoku",
 			category: "Puzzle",
 			cover: "/assets/images/Sudoku.png?height=300&width=200&text=🧱",
@@ -103,7 +103,7 @@ export default function MiniGameHub() {
 						size={18}
 					/>
 				</div>
-				<Avatar className="ml-4 ring-2 ring-white ring-opacity-50">
+				<Avatar className="ml-4 ring-2 text-purple-900 ring-white ring-opacity-50">
 					<AvatarImage
 						src="/placeholder.svg?height=40&width=40&text=👤"
 						alt="User"
@@ -126,7 +126,7 @@ export default function MiniGameHub() {
 						<Button
 							onClick={handlePlayNow}
 							variant="secondary"
-							className="w-32 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md transition-all duration-300">
+							className="w-32 bg-white text-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md transition-all duration-300">
 							Play Now
 						</Button>
 					</div>
