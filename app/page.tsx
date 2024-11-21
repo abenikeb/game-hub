@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Search, Home, Gamepad2, Trophy, User } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function MiniGameHub() {
+	const router = useRouter();
 	const [activeTab, setActiveTab] = useState("home");
 	const [activeCategory, setActiveCategory] = useState("All");
 
@@ -22,48 +25,56 @@ export default function MiniGameHub() {
 	const games = [
 		{
 			id: 1,
-			title: "Candy Crush",
-			category: "Puzzle",
+			link: "https://pinpoint-flame.vercel.app",
+			title: "Pinpoint",
+			category: "Action",
 			cover: "/assets/images/Pinpoint.png?height=300&width=200&text=🍬",
 		},
 		{
 			id: 2,
-			title: "Tetris Blitz",
+			link: "https://pinpoint-flame.vercel.app",
+			title: "Sudoku",
 			category: "Puzzle",
-			cover: "/assets/images/OinkOink.png?height=300&width=200&text=🧱",
+			cover: "/assets/images/Sudoku.png?height=300&width=200&text=🧱",
 		},
 		{
 			id: 3,
-			title: "Pac-Man",
+			link: "https://oink-oink-oeqc.vercel.app",
+			title: "OinkOink",
 			category: "Arcade",
-			cover: "/assets/images/Sudoku.png?height=300&width=200&text=👾",
+			cover: "/assets/images/OinkOink.png?height=300&width=200&text=👾",
 		},
 		{
 			id: 4,
+			link: "https://tic-tac-toe-theta-three-19.vercel.app",
 			title: "Mini Metro",
 			category: "Strategy",
 			cover: "/assets/images/Tic_Tac_Toe.png?height=300&width=200&text=🚇",
 		},
 		{
 			id: 5,
-			title: "Fruit Ninja",
+			link: "https://cube-rush.vercel.app/",
+			title: "Cube rush",
 			category: "Action",
 			cover: "/assets/images/Cube.png?height=300&width=200&text=🍉",
 		},
 		{
 			id: 6,
+			link: "https://tic-tac-toe-theta-three-19.vercel.app",
 			title: "2048",
 			category: "Puzzle",
-			cover: "/assets/images/game1.jpg?height=300&width=200&text=🔢",
+			cover: "/assets/images/game_cover2.jpg?height=300&width=200&text=🔢",
 		},
 		{
 			id: 7,
+			link: "https://tic-tac-toe-theta-three-19.vercel.app",
 			title: "Crossy Road",
 			category: "Casual",
-			cover: "/assets/images/game1.jpg?height=300&width=200&text=🐔",
+			cover: "/assets/images/game2.jpg?height=300&width=200&text=🐔",
 		},
 		{
 			id: 8,
+			link: "https://tic-tac-toe-theta-three-19.vercel.app",
 			title: "Angry Birds",
 			category: "Casual",
 			cover: "/assets/images/game1.jpg?height=300&width=200&text=🐦",
@@ -75,6 +86,9 @@ export default function MiniGameHub() {
 			? games
 			: games.filter((game) => game.category === activeCategory);
 
+	const handlePlayNow = () => {
+		router.push("https://pinpoint-flame.vercel.app");
+	};
 	return (
 		<div className="flex flex-col h-screen bg-gradient-to-b from-purple-900 via-indigo-900 to-blue-900 text-white">
 			<header className="p-4 flex items-center justify-between bg-opacity-50 bg-black backdrop-blur-md">
@@ -110,6 +124,7 @@ export default function MiniGameHub() {
 							Featured: Candy Crush
 						</h2>
 						<Button
+							onClick={handlePlayNow}
 							variant="secondary"
 							className="w-32 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md transition-all duration-300">
 							Play Now
@@ -141,7 +156,8 @@ export default function MiniGameHub() {
 					<h3 className="text-xl font-semibold mb-3">Popular Mini-Games</h3>
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
 						{filteredGames.map((game) => (
-							<div
+							<Link
+								href={game.link}
 								key={game.id}
 								className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg group">
 								<img
@@ -153,7 +169,7 @@ export default function MiniGameHub() {
 									<p className="text-sm font-medium">{game.title}</p>
 									<p className="text-xs text-gray-300">{game.category}</p>
 								</div>
-							</div>
+							</Link>
 						))}
 					</div>
 				</section>
